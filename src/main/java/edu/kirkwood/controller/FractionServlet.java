@@ -90,8 +90,22 @@ public class FractionServlet extends HttpServlet {
         }
         // Step 5: Produce the result
         if(!errorsFound) {
-            Fraction fraction3 = fraction1.add(fraction2);
-            String result = String.format("%s + %s = %s", fraction1.toString(), fraction2.toString(), fraction3.toString());
+            Fraction fraction3 = null;
+            String operatorSymbol = "";
+            if(operator.equals("add")) {
+                fraction3 = fraction1.add(fraction2);
+                operatorSymbol = "+";
+            } else if(operator.equals("subtract")) {
+                fraction3 = fraction1.subtract(fraction2);
+                operatorSymbol = "-";
+            } else if(operator.equals("multiply")) {
+                fraction3 = fraction1.multiply(fraction2);
+                operatorSymbol = "×";
+            } else if(operator.equals("divide")) {
+                fraction3 = fraction1.divide(fraction2);
+                operatorSymbol = "÷";
+            }
+            String result = String.format("%s %s %s = %s", fraction1.toString(), operatorSymbol, fraction2.toString(), fraction3.toString());
             req.setAttribute("result", result);
         }
         // Step 3: Forward all attributes to the JSP
