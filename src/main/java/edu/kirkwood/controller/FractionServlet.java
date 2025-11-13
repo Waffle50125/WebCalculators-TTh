@@ -105,7 +105,7 @@ public class FractionServlet extends HttpServlet {
                 fraction3 = fraction1.divide(fraction2);
                 operatorSymbol = "÷";
             }
-            String result = String.format("%s %s %s = %s", fraction1.toString(), operatorSymbol, fraction2.toString(), fraction3.toString());
+            String result = String.format("%s %s %s = %s", fraction1.toMixedNumber(), operatorSymbol, fraction2.toMixedNumber(), fraction3.toMixedNumber());
             req.setAttribute("result", result);
         }
         // Step 3: Forward all attributes to the JSP
