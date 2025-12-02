@@ -68,7 +68,7 @@ public class Fraction implements Comparable<Fraction> {
         }
         if(denominator < 0){
             numerator *= -1;
-            denominator = Math.abs(denominator);
+            denominator *= -1;
         }
         this.denominator = denominator;
     }
@@ -80,7 +80,7 @@ public class Fraction implements Comparable<Fraction> {
      */
     @Override
     public String toString() {
-        return toMixedNumber(numerator, denominator);
+        return numerator + "/" +  denominator;
     }
 
     /**
@@ -159,25 +159,35 @@ public class Fraction implements Comparable<Fraction> {
      *
      * @return a string representation of the fraction as a mixed number
      */
-    public static String toMixedNumber(int a, int b) {
-        Fraction f1 = new Fraction(a, b); // set the Fraction object
-        f1.simplify();
-        int wholeNum = f1.getNumerator() /  f1.getDenominator(); // get the whole number
-        int numerator = f1.getNumerator() % f1.getDenominator(); // get the new numerator
-        String result = "";
-
-        // creates a string with or without the fraction depending on if there is one.
-        if (numerator == 0) {
-            result = wholeNum + "";
-        } else {
-            if(wholeNum != 0) {
-                result = wholeNum + " " + numerator + "/" + f1.getDenominator();
-            } else {
-                result = numerator + "/" + f1.getDenominator();
-            }
+    public String toMixedNumber() {
+//        Fraction f1 = new Fraction(a, b); // set the Fraction object
+//        f1.simplify();
+//        int wholeNum = f1.getNumerator() /  f1.getDenominator(); // get the whole number
+//        int numerator = f1.getNumerator() % f1.getDenominator(); // get the new numerator
+//        String result = "";
+//
+//        // creates a string with or without the fraction depending on if there is one.
+//        if (numerator == 0) {
+//            result = wholeNum + "";
+//        } else {
+//            if(wholeNum != 0) {
+//                result = wholeNum + " " + numerator + "/" + f1.getDenominator();
+//            } else {
+//                result = numerator + "/" + f1.getDenominator();
+//            }
+//        }
+//
+//        return result;
+        simplify();
+        int whole = this.numerator / this.denominator;
+        int remainder = this.numerator % this.denominator;
+        if (remainder == 0) {
+            return String.valueOf(whole);
         }
-
-        return result;
+        if (whole == 0) {
+            return this.toString();
+        }
+        return String.valueOf(whole) + " " + String.valueOf((Math.abs(remainder))) + "/" + this.denominator;
     }
 
     /**
