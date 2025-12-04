@@ -80,7 +80,7 @@ public class Fraction implements Comparable<Fraction> {
      */
     @Override
     public String toString() {
-        return numerator + "/" +  denominator;
+        return toMixedNumber();
     }
 
     /**
@@ -160,29 +160,19 @@ public class Fraction implements Comparable<Fraction> {
      * @return a string representation of the fraction as a mixed number
      */
     public String toMixedNumber() {
-//        Fraction f1 = new Fraction(a, b); // set the Fraction object
-//        f1.simplify();
-//        int wholeNum = f1.getNumerator() /  f1.getDenominator(); // get the whole number
-//        int numerator = f1.getNumerator() % f1.getDenominator(); // get the new numerator
-//        String result = "";
-//
-//        // creates a string with or without the fraction depending on if there is one.
-//        if (numerator == 0) {
-//            result = wholeNum + "";
-//        } else {
-//            if(wholeNum != 0) {
-//                result = wholeNum + " " + numerator + "/" + f1.getDenominator();
-//            } else {
-//                result = numerator + "/" + f1.getDenominator();
-//            }
-//        }
-//
-//        return result;
-        simplify();
-        int whole = this.numerator / this.denominator;
-        int remainder = this.numerator % this.denominator;
-        if (remainder == 0) {
-            return String.valueOf(whole);
+        int wholeNum = this.numerator /  this.denominator; // get the whole number
+        int numerator = this.numerator % this.denominator; // get the new numerator
+        String result = "";
+
+        // creates a string with or without the fraction depending on if there is one.
+        if (numerator == 0) {
+            result = wholeNum + "";
+        } else {
+            if(wholeNum != 0) {
+                result = wholeNum + " " + numerator + "/" + this.denominator;
+            } else {
+                result = numerator + "/" + this.denominator;
+            }
         }
         if (whole == 0) {
             return this.toString();
