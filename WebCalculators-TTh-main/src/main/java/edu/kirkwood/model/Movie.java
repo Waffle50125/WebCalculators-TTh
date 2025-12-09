@@ -9,6 +9,7 @@ public class Movie implements Comparable<Movie> {
     private String title;
     private int year;
     private String plot;
+    private String poster;
 
     public Movie(){}
 
@@ -17,11 +18,20 @@ public class Movie implements Comparable<Movie> {
         return super.equals(obj);
     }
 
-    public Movie(String id, String title, int year, String plot) {
+    public Movie(String id, String title, int year, String plot,  String poster) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.plot = plot;
+        this.poster = poster;
+    }
+
+    public String getPoster(){
+        return poster;
+    }
+
+    public void setPoster(String poster){
+        this.poster = poster;
     }
 
     public String getId() {

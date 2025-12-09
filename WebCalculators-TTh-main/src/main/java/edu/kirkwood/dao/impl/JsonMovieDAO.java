@@ -70,8 +70,12 @@ public class JsonMovieDAO implements MovieDAO {
                 if (result.getRelease_date() != null) {
                     movie.setYear(result.getRelease_date().getYear());
                 }
+                else {
+                    movie.setYear(0);
+                }
                 movie.setPlot(result.getOverview());
                 movies.add(movie);
+                movie.setPoster(result.getPoster_path());
             });
             if (tmdbMovieResponse.getTotal_pages() > currentPage) {
                 currentPage++;

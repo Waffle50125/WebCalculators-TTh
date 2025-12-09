@@ -7,6 +7,7 @@ public class MovieSearchResult {
     private String title;
     private LocalDate release_date;
     private String overview;
+    private String poster_path;
 
     public String getId() {
         return id;
@@ -23,6 +24,8 @@ public class MovieSearchResult {
     public String getOverview() {
         return overview;
     }
+
+    public String getPoster_path() { return poster_path; }
 
     @Override
     public String toString() {
